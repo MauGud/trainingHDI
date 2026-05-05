@@ -397,7 +397,11 @@ const flowSections = [
           'El afectado tendrá que subir únicamente el documento requerido, cuando esté subido se llenará la barra de progreso en función a la cantidad de documentos regresados.',
           'Al subir sus correcciones recibirá un nuevo correo indicando que fueron recibidos sus documentos para su nuevo análisis.',
         ],
-        image: { description: 'Imagen del flujo: confirmación de corrección de documentos.' },
+        image: {
+          src: '/flow-images/correccion-documental-paso-3-confirmacion.png',
+          alt: 'Correo de confirmación de correcciones recibidas',
+          description: 'Correo de confirmación que recibe el afectado después de enviar sus correcciones.',
+        },
       },
     ],
     considerations: ['Documento incompleto.', 'Documento incorrecto.', 'Inconsistencia de datos.'],
@@ -420,16 +424,32 @@ const flowSections = [
           'La notificación se enviará por correo cuando el equipo de Nexcar marque el estatus Prevalidado.',
           'El correo llevará al usuario de HDI al expediente correspondiente.',
         ],
-        image: { description: 'Imagen del flujo: notificación de estatus prevalidado.' },
+        image: {
+          src: '/flow-images/supervision-hdi-paso-1-prevalidado.png',
+          alt: 'Correo de expediente validado para el analista HDI',
+          description: 'Correo que notifica al usuario de HDI que el expediente fue prevalidado.',
+        },
       },
       {
         title: 'Paso 2: Ver documentos',
         items: [
-          'Una vez que el usuario hace clic en el botón que lleva a la plataforma de Nexcar, podrá ver los documentos del expediente haciendo clic en la flecha "←" de la esquina superior izquierda. O haciendo clic en el ícono del ojo en cada sección.',
-          'Si el usuario de HDI decide ir a la página de "Documentos", podrá navegar entre los distintos documentos de la persona y el vehículo.',
+          'Al dar click en el botón "Ir a mi workspace en Nexcar →" te llevará a la plataforma para comenzar la supervisión del expediente.',
+          'El analista de HDI podrá ver todos los documentos cargados en el expediente dando click en el título del documento, sobre la barra del lado izquierdo que enlista los mismos. Al dar click en "Continuar" que está después de la lista de documentos, avanzará a la página de validaciones.',
+          'El analista encontrará un botón que dice: "Seguimiento del expediente" que le servirá para leer el desarrollo del expediente y observaciones de cada documento.',
           'En el botón de la esquina superior derecha "Acciones", se podrá eliminar o descargar el documento, en caso que sea necesario.',
         ],
-        image: { description: 'Imagen del flujo: vista de documentos.' },
+        image: {
+          src: '/flow-images/supervision-hdi-paso-2-workspace.png',
+          alt: 'Correo con botón para ir al workspace en Nexcar',
+          description: 'Correo con acceso al workspace de Nexcar para comenzar la supervisión del expediente.',
+        },
+        images: [
+          {
+            src: '/flow-images/supervision-hdi-paso-2-documentos.png',
+            alt: 'Vista de documentos del expediente en Nexcar',
+            description: 'Vista donde el analista puede revisar documentos cargados desde la barra lateral del expediente.',
+          },
+        ],
       },
       {
         title: 'Paso 3: Hacer seguimiento de expediente y estatus de dictaminación',
@@ -437,7 +457,11 @@ const flowSections = [
           'Al hacer clic en el botón de "Seguimiento del expediente", el equipo de HDI podrá ver todas las anotaciones realizadas en la preinspección por parte del equipo de Nexcar.',
           'El equipo de HDI podrá hacer una supervisión del caso y la predictaminación para después asignar un estatus de dictaminación (Validado o Rechazado).',
         ],
-        image: { description: 'Imagen del flujo: seguimiento de expediente.' },
+        image: {
+          src: '/flow-images/supervision-hdi-paso-3-estatus-inspeccion.png',
+          alt: 'Estatus de la inspección del expediente',
+          description: 'Panel de estatus de la inspección con botones para modificar dictamen, agregar observación y revisar seguimiento.',
+        },
       },
       {
         title: 'Paso 4: Dictaminación',
@@ -451,7 +475,11 @@ const flowSections = [
             },
           },
         ],
-        image: { description: 'Imagen del flujo: dictaminación.' },
+        image: {
+          src: '/flow-images/supervision-hdi-paso-3-modificar-dictamen.png',
+          alt: 'Modal para modificar dictamen del expediente',
+          description: 'Modal donde el analista puede seleccionar un nuevo dictamen para el expediente.',
+        },
       },
       {
         title: 'Paso 5: Descarga de reporte',
@@ -459,14 +487,22 @@ const flowSections = [
           'El botón de descargar el reporte se encuentra en la esquina superior derecha en la página de validaciones.',
           'En dicho reporte se agregan las capturas de pantalla de las validaciones realizadas y que servirán como evidencia. Actualmente del SAT y REPUVE, con opción a poder agregar más evidencias posteriores a la prueba de concepto.',
         ],
-        image: { description: 'Imagen del flujo: descarga de reporte.' },
+        image: {
+          src: '/flow-images/supervision-hdi-paso-5-descarga-reporte.png',
+          alt: 'Botón Descargar reporte en la página de validaciones',
+          description: 'Vista del botón para descargar el reporte del expediente desde la página de validaciones.',
+        },
       },
       {
         title: 'Paso 6: Comunicación al afectado',
         items: [
           'Una vez que el usuario de HDI asigne un estatus en la dictaminación, el afectado recibirá comunicación sobre su siniestro, en donde se le notifica que su caso fue aprobado y necesita llevar documentos de forma física.',
         ],
-        image: { description: 'Imagen del flujo: comunicación al afectado.' },
+        image: {
+          src: '/flow-images/supervision-hdi-paso-6-comunicacion-afectado.png',
+          alt: 'Correo de caso aprobado enviado al afectado',
+          description: 'Correo que informa al afectado que su caso fue aprobado y comunica los siguientes pasos.',
+        },
       },
     ],
     considerations: ['Qué ya validó Nexcar.', 'Cuenta CLABE.', 'Datos críticos.'],
@@ -610,7 +646,13 @@ export default function App() {
         <SectionHeader
           eyebrow="Training operativo ANA Seguros"
           title="Prueba de concepto"
-          description="Sitio de consulta paso a paso para aprender, operar y resolver errores comunes durante el proceso."
+          description={(
+            <>
+              Sitio de consulta paso a paso para aprender, operar y resolver errores comunes durante el proceso.
+              <br />
+              Horario de atención para la Prueba de Concepto de 9 am a 6 pm
+            </>
+          )}
         />
 
         <FlowDiagram />
