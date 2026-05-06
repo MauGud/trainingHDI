@@ -551,7 +551,7 @@ const ganttDays = [
 const ganttRows = [
   {
     label: 'Capacitación Día 1',
-    detail: 'Secciones 1-2 · docs + mesa Nexcar',
+    detail: 'Secciones 1-3 · docs + mesa Nexcar',
     left: 2,
     width: 47,
     variant: 'training',
